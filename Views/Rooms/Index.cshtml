@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CoderResort.Models.Room>
+
+<header class="defaultHero">
+    <div class="banner">
+        <h1>Luxurious Rooms</h1>
+        <div></div>
+        <p>Deluxe rooms starting at $40 per night</p>
+        <a asp-controller="Rooms" asp-action="Rooms" class="btn-primary">
+            our rooms
+        </a>
+    </div>
+
+</header>
+
+<section class="services">
+    <div class="section-title">
+        <h4>Services</h4>
+        <div></div>
+    </div>
+    <div class="services-center">
+        <article class="service">
+            <h6>Free cocktails</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, praesentium.</p>
+        </article>
+
+        <article class="service">
+            <h6>Endless Hiking</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, praesentium.</p>
+        </article>
+
+        <article class="service">
+            <h6>Free Shuttle Rides</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, praesentium.</p>
+        </article>
+    </div>
+</section>
+
+<section class="featured-rooms">
+    <div class="section-title">
+        <h4>Featured Rooms</h4>
+        <div></div>
+    </div>
+    <div class="services-center">
+        <div class="featured-rooms-center">
+            @if (Model.Count() > 0)
+            {
+                @foreach (var item in Model)
+                {
+                    <article class="room">
+                        <div class="img-container">
+                            <img src="@item.ImageUrl" alt="room" />
+                            <div class="price-top">
+                                <h6> $@item.Price</h6>
+                                <p>per night</p>
+                            </div>
+                            <a asp-controller="Rooms"
+                       asp-action="SingleRoom"
+                       asp-route-id="@item.RoomId" class="btn-primary room-link">
+                                Features
+                            </a>
+                        </div>
+                        <p class="room-info">@item.Name</p>
+                    </article>
+                }
+            }
+            else 
+            { 
+                <p> No rooms available!</p>
+            }
+            </div>
+
+    </div>
+</section>
+
+

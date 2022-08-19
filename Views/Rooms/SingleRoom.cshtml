@@ -1,0 +1,36 @@
+﻿@model Room
+
+<div class="StyledHero">
+    <div class="banner">
+        <h1> @Model.Name</h1>
+        <div></div>
+        <a asp-controller="Rooms"
+           asp-action="Rooms" class="btn-primary">
+            Back To Rooms
+        </a>
+    </div>
+</div>
+<section class="single-room">
+    <div class="single-room-images">
+        <img src="@Model.ImageUrl" />
+    </div>
+    <div class="single-room-info">
+        <article class="desc">
+            <h3>details</h3>
+            <p>@Model.Description</p>
+        </article>
+        <article class="info">
+            <h3>Info</h3>
+            <h6>Price : $ @Model.Price</h6>
+            <h6>Size : @Model.Size SQFT</h6>
+            <h6>
+                Max capacity : @Model.Capacity
+            </h6>
+        </article>
+    </div>
+</section>
+
+<div class="text-center">
+    <a class="btn btn-secondary" asp-controller="Reserve"
+       asp-action="Reserve" asp-route-id="@Model.RoomId">Reserve This Room</a>
+</div>

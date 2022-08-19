@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CoderResort.Models.Room>
+
+<header class="roomsHero">
+    <div class="banner">
+        <h1>Our Rooms</h1>
+        <div></div>
+        <a asp-controller="Rooms"
+           asp-action="Index" class="btn-primary">
+            Return Home
+        </a>
+    </div>
+
+</header>
+
+<section class="roomslist">
+    <div class="roomslist-center">
+        @foreach (var item in Model)
+          {
+              <article class="room">
+                  <div class="img-container">
+                      <img src=" @item.ImageUrl" alt="room" />
+                      <div class="price-top">
+                          <h6> $@item.Price</h6>
+                          <p>per night</p>
+                      </div>
+                      <a asp-controller="Rooms"
+                         asp-action="SingleRoom"
+                         asp-route-id="@item.RoomId"  class="btn-primary room-link">
+                      Features
+                      </a>
+                  </div>
+                  <p class="room-info">@item.Name</p>
+              </article>
+          } 
+    </div>
+</section>
